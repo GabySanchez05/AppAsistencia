@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AppAsistencia — Colegio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="{% url 'attendance:home' %}" class="nav-brand">🎓 AppAsistencia</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú">☰</button>
+            <ul class="nav-links" id="navLinks">
+                {% if user.is_authenticated %}
+                    {% if user_is_admin %}
+                        <li><a href="{% url 'attendance:admin_dashboard' %}">Panel Admin</a></li>
+                        <li><a href="{% url 'admin:index' %}" target="_blank">Django Admin</a></li>
+                        <li><a href="{% url 'accounts:register' %}">Crear Usuario</a></li>
+                    {% elif user_is_profesor %}
+                        <li><a href="{% url 'attendance:profesor_dashboard' %}">Panel Docente</a></li>
+                    {% elif user_is_estudiante %}
+                        <li><a href="{% url 'attendance:estudiante_dashboard' %}">Portal Estudiante</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'attendance:public_info' %}">Info Pública</a></li>
+                    <li><a href="{% url 'accounts:profile' %}">Mi Perfil</a></li>
+                    <li>
+                        <form method="post" action="{% url 'accounts:logout' %}" class="nav-logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link-btn">Cerrar Sesión</button>
+                        </form>
+                    </li>
+                    <li class="nav-user-info">
+                        <span class="nav-badge">{{ user_role_display }}</span>
+                        {{ user.get_full_name|default:user.username }}
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'attendance:public_info' %}">Inicio</a></li>
+                    <li><a href="{% url 'accounts:login' %}">Iniciar Sesión</a></li>
+                    <li><a href="{% url 'accounts:register' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container main-content">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+                        <button class="alert-close" onclick="this.parentElement.remove()">&times;</button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 <strong>AppAsistencia</strong> — Subproyecto Desarrollo de Aplicaciones 1</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/app.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Framework principal
+Django>=5.1,<5.2
+djangorestframework>=3.15
+
+# Base de datos PostgreSQL
+psycopg2-binary>=2.9
+
+# CORS para comunicación con frontend
+django-cors-headers>=4.4
+
+# Variables de entorno
+python-dotenv>=1.0
+
+# Manejo de imágenes (fotos de perfil)
+Pillow>=10.4
+
+# Utilidades
+django-extensions>=3.2
+

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Portal del Estudiante — AppAsistencia{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Portal del Estudiante</h1>
+    <p class="text-muted">Consulta de información personal y récord de asistencia escolar</p>
+</div>
+
+<div class="info-card" style="border-color: var(--color-primary); margin-bottom: 2rem;">
+    <h3>🎓 Bienvenido, {{ user.get_full_name|default:user.username }}</h3>
+    <p>Bienvenido a tu espacio personal para la consulta de información académica y verificación de tu registro de asistencias.</p>
+</div>
+
+<!-- Módulos asignados al rol Estudiante -->
+<h2 style="margin-bottom: 1rem; color: var(--color-primary);">Módulos del Estudiante</h2>
+<div class="info-grid">
+    <div class="info-card">
+        <h3>👤 Mis Datos Personales</h3>
+        <p><strong>Nombre completo:</strong> {{ user.get_full_name|default:user.username }}</p>
+        <p><strong>Usuario:</strong> <code>{{ user.username }}</code></p>
+        <p><strong>Correo:</strong> {{ user.email|default:"No registrado" }}</p>
+    </div>
+
+    <div class="info-card">
+        <h3>📅 Historial de Asistencias</h3>
+        <p>Módulo de consulta donde podrás verificar las asistencias, tardanzas y justificaciones registradas.</p>
+    </div>
+
+    <div class="info-card">
+        <h3>⚙️ Ajustes de Cuenta</h3>
+        <p>Actualiza tus datos de contacto personales o fotografía de perfil institucional.</p>
+        <div style="margin-top: 1rem;">
+            <a href="{% url 'accounts:profile' %}" class="btn btn-secondary">Editar Mi Perfil &rarr;</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

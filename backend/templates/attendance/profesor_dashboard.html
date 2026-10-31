@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Panel de Profesor — AppAsistencia{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Panel Docente</h1>
+    <p class="text-muted">Gestión de asistencia escolar y seguimiento de cursos</p>
+</div>
+
+<div class="info-card" style="border-color: var(--color-yellow); margin-bottom: 2rem;">
+    <h3>👨‍🏫 Bienvenido, Profesor {{ user.get_full_name|default:user.username }}</h3>
+    <p>Espacio de trabajo del docente para el control diario de asistencia de los estudiantes y seguimiento de cursos escolares.</p>
+</div>
+
+<!-- Módulos asignados al rol Profesor -->
+<h2 style="margin-bottom: 1rem; color: var(--color-primary);">Módulos Docentes</h2>
+<div class="info-grid">
+    <div class="info-card">
+        <h3>📝 Registro de Asistencia</h3>
+        <p>Módulo para la toma de asistencia diaria de los alumnos por grado escolar y fecha lectiva.</p>
+    </div>
+
+    <div class="info-card">
+        <h3>📊 Reportes y Estadísticas</h3>
+        <p>Visualización del porcentaje de puntualidad, faltas justificadas e inasistencias por sección escolar.</p>
+    </div>
+
+    <div class="info-card">
+        <h3>⚙️ Mi Perfil</h3>
+        <p>Actualiza tus datos de contacto personales o fotografía de perfil institucional.</p>
+        <div style="margin-top: 1rem;">
+            <a href="{% url 'accounts:profile' %}" class="btn btn-secondary">Editar Mi Perfil &rarr;</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

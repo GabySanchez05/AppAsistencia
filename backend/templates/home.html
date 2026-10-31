@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio — AppAsistencia{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Bienvenido a AppAsistencia</h1>
+    <p>Sistema de Control de Asistencia Escolar</p>
+
+    {% if user.is_authenticated %}
+        <p>Hola, <strong>{{ user.get_full_name|default:user.username }}</strong>. Tu rol es: <strong>{{ user_role_display }}</strong></p>
+        <div class="hero-actions">
+            {% if user_is_admin or user_is_gestor %}
+                <a href="{% url 'attendance:dashboard' %}" class="btn btn-primary">Ir al Dashboard</a>
+            {% elif user_is_usuario %}
+                <a href="{% url 'attendance:my_attendance' %}" class="btn btn-primary">Ver Mi Asistencia</a>
+            {% else %}
+                <a href="{% url 'attendance:public_info' %}" class="btn btn-primary">Ver Información</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="hero-actions">
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary">Iniciar Sesión</a>
+            <a href="{% url 'attendance:public_info' %}" class="btn btn-secondary">Información Pública</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

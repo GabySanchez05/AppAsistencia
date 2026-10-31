@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppAsistencia - Colegio</title>
+  <style>
+    :root {
+      --color-primary: #1b365d;
+      --color-yellow: #facc15;
+      --color-yellow-hover: #fde047;
+      --color-bg: #f1f5f9;
+      --color-black: #000000;
+      --color-white: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background-color: var(--color-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: var(--color-primary);
+      border-bottom: 4px solid var(--color-yellow);
+      color: var(--color-white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .badge {
+      background: var(--color-yellow);
+      color: var(--color-black);
+      padding: 0.25rem 0.65rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      border: 1.5px solid var(--color-black);
+    }
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .hero-box {
+      background: var(--color-white);
+      border: 2px solid #cbd5e1;
+      border-top: 6px solid var(--color-primary);
+      border-bottom: 6px solid var(--color-yellow);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .hero-box h2 {
+      font-size: 2.2rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      font-weight: 800;
+    }
+    .hero-box p {
+      font-size: 1.15rem;
+      color: #475569;
+      margin-bottom: 2rem;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    /* Todos los botones con borde negro */
+    button, .btn {
+      border: 2px solid var(--color-black) !important;
+      border-radius: 8px;
+      padding: 0.85rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.15s ease-in-out;
+      box-shadow: 3px 3px 0 var(--color-black);
+    }
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--color-black);
+    }
+    .btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--color-black);
+    }
+    .btn-primary {
+      background-color: var(--color-yellow);
+      color: var(--color-black);
+    }
+    .btn-primary:hover {
+      background-color: var(--color-yellow-hover);
+    }
+    .btn-secondary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .btn-secondary:hover {
+      background-color: #2a5288;
+    }
+    footer {
+      background-color: #10223b;
+      color: #94a3b8;
+      border-top: 4px solid var(--color-yellow);
+      padding: 1.25rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer strong {
+      color: var(--color-yellow);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎓 AppAsistencia — Colegio</h1>
+    <span class="badge">Vite + Django</span>
+  </header>
+  <main>
+    <div class="hero-box">
+      <h2>Sistema Escolar de Asistencia</h2>
+      <p>Plataforma para el registro, verificación y control de asistencia de estudiantes.</p>
+      <div class="btn-group">
+        <a href="http://localhost:8000/accounts/login/" class="btn btn-primary">Iniciar Sesión</a>
+        <a href="http://localhost:8000/info/" class="btn btn-secondary">Información Pública</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2026 <strong>AppAsistencia</strong> — Subproyecto Desarrollo de Aplicaciones 1</p>
+  </footer>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

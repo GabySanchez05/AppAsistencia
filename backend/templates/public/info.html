@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Información Pública — AppAsistencia{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>🎓 Sistema de Asistencia Escolar</h1>
+    <p class="hero-subtitle">Plataforma Web para el Registro y Verificación de Asistencia Estudiantil</p>
+
+    {% if not user.is_authenticated %}
+        <div class="hero-actions">
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg">Iniciar Sesión</a>
+            <a href="{% url 'accounts:register' %}" class="btn btn-secondary btn-lg">Registrarse</a>
+        </div>
+    {% endif %}
+</div>
+
+<div class="info-card" style="border-color: var(--color-yellow); margin-bottom: 2.5rem;">
+    <h3>🏫 Acerca del Proyecto</h3>
+    <p>Esta aplicación web ha sido diseñada para optimizar el control de asistencia en instituciones educativas, facilitando la interacción entre la directiva del colegio, el cuerpo docente y los estudiantes.</p>
+</div>
+
+<!-- Estructura de Roles del Sistema -->
+<h2 style="margin-bottom: 1rem; color: var(--color-primary); text-align: center;">Roles y Privilegios en el Sistema</h2>
+<div class="info-grid">
+    <div class="info-card" style="border-top: 5px solid var(--color-primary);">
+        <h3>👑 Administrador</h3>
+        <p>Control total de la aplicación, administración de usuarios y acceso exclusivo al panel de gestión de base de datos <strong>Django Admin</strong>.</p>
+    </div>
+
+    <div class="info-card" style="border-top: 5px solid var(--color-yellow-dark);">
+        <h3>👨‍🏫 Docente / Profesor</h3>
+        <p>Encargado de la toma de asistencia diaria en el aula, supervisión de listas escolares y consulta de reportes de puntualidad.</p>
+    </div>
+
+    <div class="info-card" style="border-top: 5px solid var(--color-info);">
+        <h3>🎓 Estudiante</h3>
+        <p>Acceso a su portal individual para la consulta y verificación de su récord personal de asistencias, tardanzas y justificaciones.</p>
+    </div>
+
+    <div class="info-card" style="border-top: 5px solid var(--color-border);">
+        <h3>🌐 Comunidad Escolar</h3>
+        <p>Acceso al portal institucional informativo y a los módulos de registro e inicio de sesión para miembros de la institución.</p>
+    </div>
+</div>
+{% endblock %}
